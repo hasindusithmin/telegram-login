@@ -38,10 +38,11 @@
         },
         body: JSON.stringify(client) // body data type must match "Content-Type" header
     }).then(res=>{
-      if (res.status === 200) history.back();
+      if (res.status === 200) window.location.href = `https://codeunity.netlify.app/${sessionStorage.getItem('from')}`;
     })
   }
   sessionStorage.setItem('uuid',window.location.href.split("#")[1])
+  sessionStorage.setItem('from',window.location.href.split("#")[2])
   </script>
 
 </body>
