@@ -31,7 +31,15 @@
       "chat_id":user.id.toString(),
       "user_id":sessionStorage.getItem('uuid')
     }
-    console.log(client);
+    fetch('https://data.mongodb-api.com/app/application-0-nfogs/endpoint/adduser',{
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(client) // body data type must match "Content-Type" header
+    }).then(res=>{
+      if (res.status === 200) history.back();
+    })
   }
   sessionStorage.setItem('uuid',window.location.href.split("#")[1])
   </script>
