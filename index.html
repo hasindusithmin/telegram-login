@@ -29,7 +29,8 @@
       "first_name":user.first_name,
       "last_name":user.last_name,
       "chat_id":user.id.toString(),
-      "user_id":sessionStorage.getItem('uuid')
+      "user_id":sessionStorage.getItem('uuid'),
+      "role":sessionStorage.getItem('from')
     }
     fetch('https://data.mongodb-api.com/app/application-0-nfogs/endpoint/adduser',{
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
