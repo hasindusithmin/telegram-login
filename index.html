@@ -30,20 +30,22 @@
       "last_name":user.last_name,
       "chat_id":user.id.toString(),
       "user_id":sessionStorage.getItem('uuid'),
-      "role":sessionStorage.getItem('from')
+      "role":sessionStorage.getItem('role')
     }
-    fetch('https://data.mongodb-api.com/app/application-0-nfogs/endpoint/adduser',{
+    if (sessionStorage.getItem('uuid')) {
+      fetch('https://data.mongodb-api.com/app/application-0-nfogs/endpoint/adduser',{
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(client) // body data type must match "Content-Type" header
     }).then(res=>{
-      if (res.status === 200) window.location.href = `https://codeunity.netlify.app/${sessionStorage.getItem('from')}`;
+      if (res.status === 200) window.location.href = `https://codeunity.netlify.app/${sessionStorage.getItem('role')}`;
     })
+    }
   }
   sessionStorage.setItem('uuid',window.location.href.split("#")[1])
-  sessionStorage.setItem('from',window.location.href.split("#")[2])
+  sessionStorage.setItem('role',window.location.href.split("#")[2])
   </script>
 
 </body>
