@@ -25,7 +25,13 @@
     </div>
   <script type="text/javascript">
     function onTelegramAuth(user) {
-    console.log(user)
+    const client = {
+      "first_name":user.first_name,
+      "last_name":user.last_name,
+      "chat_id":user.id,
+      "user_id":sessionStorage.getItem('uuid')
+    }
+    console.log(client);
   }
   sessionStorage.setItem('uuid',window.location.href.split("#")[1])
   </script>
