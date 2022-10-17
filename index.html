@@ -19,35 +19,9 @@
 </head>
 
 <body>
-  <div class="center">
-          <script async="false" src="https://telegram.org/js/telegram-widget.js?19" data-telegram-login="codeunitybot"
-      data-size="large" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
-    </div>
-  <script type="text/javascript">
-    function onTelegramAuth(user) {
-    const client = {
-      "first_name":user.first_name,
-      "last_name":user.last_name,
-      "chat_id":user.id.toString(),
-      "user_id":sessionStorage.getItem('uuid'),
-      "role":sessionStorage.getItem('role')
-    }
-    if (sessionStorage.getItem('uuid')) {
-      fetch('https://data.mongodb-api.com/app/application-0-nfogs/endpoint/adduser',{
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(client) // body data type must match "Content-Type" header
-    }).then(res=>{
-      if (res.status === 200) window.location.href = `https://codeunity.netlify.app/${sessionStorage.getItem('role')}`;
-    })
-    }
-  }
-  sessionStorage.setItem('uuid',window.location.href.split("#")[1])
-  sessionStorage.setItem('role',window.location.href.split("#")[2])
-  </script>
-
+  <div class="w3-content w3-padding-64 w3-center">
+    <script async src="https://telegram.org/js/telegram-widget.js?21" data-telegram-login="fetchideasbot" data-size="large" data-auth-url="http:///localhost:3000/login" data-request-access="write"></script>
+  </div>
 </body>
 
 </html>
